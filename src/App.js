@@ -1,13 +1,15 @@
-import Login from "./components/Login";
-import Logout from "./components/Logout";
+import LoginButton from "./components/Login";
+import LogoutButton from "./components/Logout";
 import Profile from "./components/Profile";
+import UpdateAvail from "./components/UpdateAvail";
 
 const App = () => {
   return (
     <div className="App">
-      <Login />
-      <Logout />
+      <LoginButton />
+      <LogoutButton />
       <Profile />
+      <UpdateAvail />
     </div>
   );
 };

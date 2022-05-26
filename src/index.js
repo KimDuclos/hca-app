@@ -1,9 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
 import { Auth0Provider } from "@auth0/auth0-react";
+import React from "react";
+import {createRoot } from "react-dom/client";
+import App from "./App";
 
-ReactDOM.render(
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+root.render(
   <Auth0Provider
     domain="hcaapp.us.auth0.com"
     clientId="fsYFvI3Ja0vHW3ZU0jAyjxDBv8MaEipf"
@@ -11,5 +14,4 @@ ReactDOM.render(
   >
     <App />
   </Auth0Provider>,
-  document.getElementById("root")
 );
