@@ -14,20 +14,19 @@ knex.schema
   .hasTable("books")
   .then((exists) => {
     if (!exists) {
-      return knex.schema.createTable("employees", (table) => {
-        table.increments("id").primary();
-        table.string("fname");
-        table.string("lname");
-        table.string("email");
-        table
-          .string("empid")
-          .then(() => {
-            console.log("Employees Table Created");
-          })
-          .catch((err) => {
-            console.err("There was an error creating the employees database.");
-          });
-      });
+      return knex.schema
+        .createTable("employees", (table) => {
+          table.increments("id").primary();
+          table.string("fname");
+          table.string("lname");
+          table.string("email");
+        })
+        .then(() => {
+          console.log("Employees Table Created");
+        })
+        .catch((err) => {
+          console.err("There was an error creating the employees database.");
+        });
     }
   })
   .then(() => {
