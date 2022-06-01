@@ -43,8 +43,10 @@ const CreateEmployee = () => {
         </Form>
       </Formik>
       <div className="emp-list">
-          <h3>Employee List</h3>
-          <div>{name} {email}</div>
+        <h3>Employee List</h3>
+        <div>
+          {name} {email}
+        </div>
       </div>
     </div>
   );
