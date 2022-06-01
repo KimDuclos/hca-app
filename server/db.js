@@ -17,8 +17,7 @@ knex.schema
       return knex.schema
         .createTable("employees", (table) => {
           table.increments("id").primary();
-          table.string("fname");
-          table.string("lname");
+          table.string("name");
           table.string("email");
         })
         .then(() => {

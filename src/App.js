@@ -1,8 +1,9 @@
 import LoginButton from "./components/Login";
 import LogoutButton from "./components/Logout";
 import Profile from "./components/Profile";
-import UpdateAvail from "./components/UpdateAvail";
+import CreateEmployee from "./components/CreateEmployee";
 import CreateSchedule from "./components/CreateSchedule";
+import UpdateAvail from "./components/UpdateAvail";
 
 const App = () => {
   return (
@@ -10,8 +11,9 @@ const App = () => {
       <LoginButton />
       <LogoutButton />
       <Profile />
-      <UpdateAvail />
+      <CreateEmployee />
       <CreateSchedule />
+      <UpdateAvail />
     </div>
   );
 };

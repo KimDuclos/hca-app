@@ -8,6 +8,8 @@ router.get("/all", employeeesRoutes.employeesAll);
 
 router.post("/create", employeeesRoutes.employeesAll);
 
-router.put("/delete", employeeesRoutes.employeesAll);
+router.put("/update", employeeesRoutes.employeesAll);
+
+router.delete("/delete", employeeesRoutes.employeesAll);
 
 module.exports = router;

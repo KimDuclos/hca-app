@@ -1,6 +1,6 @@
 import { Auth0Provider } from "@auth0/auth0-react";
 import React from "react";
-import {createRoot } from "react-dom/client";
+import { createRoot } from "react-dom/client";
 import App from "./App";
 
 const rootElement = document.getElementById("root");
@@ -13,5 +13,5 @@ root.render(
     redirectUri={window.location.origin}
   >
     <App />
-  </Auth0Provider>,
+  </Auth0Provider>
 );

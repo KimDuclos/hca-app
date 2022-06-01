@@ -1,11 +1,25 @@
 import React from "react";
 import { Field, Form, Formik } from "formik";
 import { useState } from "react";
+import axios from "axios";
 
 const UpdateAvail = () => {
   const [values, setValues] = useState("");
+
+  const handleAvailCreate = () => {
+    axios.post("http://localhost:4000/employees/create", {
+      values: values,
+    });
+  };
+
+  const handleAvailUpdate = () => {
+    axios.put("http://localhost:4000/employees/update", {
+      values: values,
+    });
+  };
+
   return (
-    <div>
+    <div className="update-avail-container">
       <h1>My Availability</h1>
       <Formik
         initialValues={{
@@ -19,7 +33,12 @@ const UpdateAvail = () => {
         }}
         onSubmit={(values) => {
           setValues(values);
-          console.log(`VALUES: ${values.sunday}`);
+          console.log(values);
+          if (values.length <= 0) {
+            handleAvailCreate();
+          } else {
+            handleAvailUpdate();
+          }
         }}
       >
         <Form>

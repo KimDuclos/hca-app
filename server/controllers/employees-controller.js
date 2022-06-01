@@ -17,18 +17,17 @@ exports.employeesAll = async (req, res) => {
 exports.employeesCreate = async (req, res) => {
   knex("employees")
     .insert({
-      fname: req.body.fname,
-      lname: req.body.lname,
+      fname: req.body.name,
       email: req.body.email,
     })
     .then(() => {
       res.json({
-        message: `Employee ${req.body.fname} ${req.body.lname} created.`,
+        message: `Employee ${req.body.name} created.`,
       });
     })
     .catch((err) => {
       res.json({
-        message: `There was an error creating employee: ${req.body.fname} ${req.body.lname}`,
+        message: `There was an error creating employee: ${req.body.fname}`,
       });
     });
 };
