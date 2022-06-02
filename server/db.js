@@ -1,9 +1,9 @@
 const path = require("path");
 
-const dbPath = path.resolve(__dirname, "db/database.sqlite");
+const dbPath = path.resolve(__dirname, "./db/database.sqlite");
 
 const knex = require("knex")({
-  client: "sqlite",
+  client: "sqlite3",
   connection: {
     filename: dbPath,
   },
@@ -11,7 +11,7 @@ const knex = require("knex")({
 });
 
 knex.schema
-  .hasTable("books")
+  .hasTable("employees")
   .then((exists) => {
     if (!exists) {
       return knex.schema

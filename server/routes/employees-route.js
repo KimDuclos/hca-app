@@ -6,10 +6,8 @@ const router = express.Router();
 
 router.get("/all", employeeesRoutes.employeesAll);
 
-router.post("/create", employeeesRoutes.employeesAll);
+router.post("/create", employeeesRoutes.employeesCreate);
 
-router.put("/update", employeeesRoutes.employeesAll);
-
-router.delete("/delete", employeeesRoutes.employeesAll);
+router.delete("/delete", employeeesRoutes.employeesDelete);
 
 module.exports = router;

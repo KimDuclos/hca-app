@@ -7,13 +7,13 @@ const UpdateAvail = () => {
   const [values, setValues] = useState("");
 
   const handleAvailCreate = () => {
-    axios.post("http://localhost:4000/employees/create", {
+    axios.post("http://localhost:5000/employees/create", {
       values: values,
     });
   };
 
   const handleAvailUpdate = () => {
-    axios.put("http://localhost:4000/employees/update", {
+    axios.put("http://localhost:5000/employees/update", {
       values: values,
     });
   };

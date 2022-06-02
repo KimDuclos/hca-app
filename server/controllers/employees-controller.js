@@ -1,4 +1,4 @@
-const knex = require("../db");
+const knex = require("./../db");
 
 // ALL
 exports.employeesAll = async (req, res) => {
@@ -17,8 +17,8 @@ exports.employeesAll = async (req, res) => {
 exports.employeesCreate = async (req, res) => {
   knex("employees")
     .insert({
-      fname: req.body.name,
-      email: req.body.email,
+      "name": req.body.name,
+      "email": req.body.email,
     })
     .then(() => {
       res.json({
@@ -27,7 +27,7 @@ exports.employeesCreate = async (req, res) => {
     })
     .catch((err) => {
       res.json({
-        message: `There was an error creating employee: ${req.body.fname}`,
+        message: `There was an error creating employee: ${req.body.name}`,
       });
     });
 };
@@ -41,6 +41,6 @@ exports.employeesDelete = async (req, res) => {
       res.json({ message: `Book ${req.body.id} deleted.` });
     })
     .catch((err) => {
-      res.json({ message: `There was an error deleting ${req.body.id}` });
+      res.json({ message: `There was an error deleting ${req.body.id} : ${err}` });
     });
 };

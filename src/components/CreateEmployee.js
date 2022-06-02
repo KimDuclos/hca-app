@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
 import axios from "axios";
 
 const CreateEmployee = () => {
+  const [employees, setEmployees] = useState("");  
   const [name, setName] = useState(" ");
   const [email, setEmail] = useState(" ");
 
+  useEffect(() => {
+    fetchEmployees();
+  }, []);
+
+  const fetchEmployees = async () => {
+      axios
+        .get("http://localhost:5000/employees/all")
+        .then(res => {
+            setEmployees(res.data)
+        })
+        .catch(err => (`There was an error retrieving all employees: ${err}`));
+  }
+
   const handleCreateEmployee = () => {
-    axios.post("http://localhost:4000/employees/create", {
+    axios.post("http://localhost:5000/employees/create", {
       name: name,
       email: email,
     });
@@ -45,7 +59,7 @@ const CreateEmployee = () => {
       <div className="emp-list">
         <h3>Employee List</h3>
         <div>
-          {name} {email}
+          {name} {email} {employees}
         </div>
       </div>
     </div>
