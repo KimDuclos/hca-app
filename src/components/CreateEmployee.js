@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import axios from "axios";
 
 const CreateEmployee = () => {
-  const [employees, setEmployees] = useState("");  
+  const [employees, setEmployees] = useState([]);
   const [name, setName] = useState(" ");
   const [email, setEmail] = useState(" ");
 
@@ -12,19 +12,23 @@ const CreateEmployee = () => {
   }, []);
 
   const fetchEmployees = async () => {
-      axios
-        .get("http://localhost:5000/employees/all")
-        .then(res => {
-            setEmployees(res.data)
-        })
-        .catch(err => (`There was an error retrieving all employees: ${err}`));
-  }
+    axios
+      .get("http://localhost:5000/employees/all")
+      .then((res) => {
+        setEmployees(res.data);
+      })
+      .catch((err) => `There was an error retrieving all employees: ${err}`);
+  };
 
   const handleCreateEmployee = () => {
     axios.post("http://localhost:5000/employees/create", {
       name: name,
       email: email,
     });
+  };
+
+  const getEmployeeList = (item) => {
+    return [item.name, item.email].join(" ");
   };
 
   return (
@@ -58,9 +62,7 @@ const CreateEmployee = () => {
       </Formik>
       <div className="emp-list">
         <h3>Employee List</h3>
-        <div>
-          {name} {email} {employees}
-        </div>
+        <div>{employees.map(getEmployeeList)}</div>
       </div>
     </div>
   );
