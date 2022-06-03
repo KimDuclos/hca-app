@@ -30,8 +30,7 @@ const CreateEmployee = () => {
   const getEmployeeList = (item) => {
     return (
       <ul key={Math.random()}>
-        <li>{item.name}</li>
-        <li>{item.email}</li>
+        <li>{item.name} {item.email}</li>
       </ul>
     );
   };

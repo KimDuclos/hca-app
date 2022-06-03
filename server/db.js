@@ -31,7 +31,7 @@ knex.schema
   .then(() => {
     console.log("Done creating databases.");
   })
-  .catch((error) => {
+  .catch(() => {
     console.error("There was an error creating the databases.");
   });
 

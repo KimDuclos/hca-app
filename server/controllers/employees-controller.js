@@ -17,8 +17,8 @@ exports.employeesAll = async (req, res) => {
 exports.employeesCreate = async (req, res) => {
   knex("employees")
     .insert({
-      "name": req.body.name,
-      "email": req.body.email,
+      name: req.body.name,
+      email: req.body.email,
     })
     .then(() => {
       res.json({
@@ -32,6 +32,21 @@ exports.employeesCreate = async (req, res) => {
     });
 };
 
+// UPDATE
+exports.employeesUpdate = async (req, res) => {
+  knex("employees")
+    .where("id", req.body.id)
+    .update({
+      name: req.body.name,
+      email: req.body.email,
+    })
+    .catch((err) => {
+      res.json({
+        message: `There was an error updating ${req.body.id} : ${err}`,
+      });
+    });
+};
+
 // DELETE
 exports.employeesDelete = async (req, res) => {
   knex("employees")
@@ -41,6 +56,8 @@ exports.employeesDelete = async (req, res) => {
       res.json({ message: `Book ${req.body.id} deleted.` });
     })
     .catch((err) => {
-      res.json({ message: `There was an error deleting ${req.body.id} : ${err}` });
+      res.json({
+        message: `There was an error deleting ${req.body.id} : ${err}`,
+      });
     });
 };
