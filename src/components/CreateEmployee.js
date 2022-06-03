@@ -28,7 +28,12 @@ const CreateEmployee = () => {
   };
 
   const getEmployeeList = (item) => {
-    return [item.name, item.email].join(" ");
+    return (
+      <ul key={Math.random()}>
+        <li>{item.name}</li>
+        <li>{item.email}</li>
+      </ul>
+    );
   };
 
   return (
@@ -60,10 +65,8 @@ const CreateEmployee = () => {
           <button type="submit">Submit</button>
         </Form>
       </Formik>
-      <div className="emp-list">
-        <h3>Employee List</h3>
-        <div>{employees.map(getEmployeeList)}</div>
-      </div>
+      <h3>Employee List</h3>
+      <div>{employees.map(getEmployeeList)}</div>
     </div>
   );
 };
