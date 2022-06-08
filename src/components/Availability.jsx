@@ -26,15 +26,15 @@ const Availability = () => {
       .catch((err) => `There was an error retrieving all avails: ${err}`);
   };
 
-  const handleCreateAvail = () => {
+  const handleCreateAvail = (avails) => {
     axios.post("http://localhost:5000/avails/create", {
-      sunday: sunday,
-      monday: monday,
-      tuesday: tuesday,
-      wednesday: wednesday,
-      thursday: thursday,
-      friday: friday,
-      saturday: saturday,
+      sunday: avails.sunday,
+      monday: avails.monday,
+      tuesday: avails.tuesday,
+      wednesday: avails.wednesday,
+      thursday: avails.thursday,
+      friday: avails.friday,
+      saturday: avails.saturday,
     });
   };
 
@@ -51,95 +51,81 @@ const Availability = () => {
           friday: "not available",
           saturday: "not available",
         }}
-        onSubmit={() => {
-          console.log(
-            sunday,
-            monday,
-            tuesday,
-            wednesday,
-            thursday,
-            friday,
-            saturday
-          );
-          console.log(`AVAILS: ${avails.sunday}`);
-          handleCreateAvail();
+        onSubmit={(avails) => {
+          setSunday(sunday);
+          setMonday(monday);
+          setTuesday(tuesday);
+          setWednesday(wednesday);
+          setThursday(thursday);
+          setFriday(friday);
+          setSaturday(saturday);
+          console.log(`AVAILS:
+            Sunday: ${avails.sunday}
+            Monday: ${avails.monday}
+            Tuesday: ${avails.tuesday}
+            Wednesday: ${avails.wednesday}
+            Thursday: ${avails.thursday}
+            Friday: ${avails.friday}
+            Saturday: ${avails.saturday}
+          `);
+          handleCreateAvail(avails);
         }}
       >
         <Form>
           <h4>Sunday</h4>
-          <Field
-            as="select"
-            name="sunday"
-            onChange={(e) => setSunday(e.target.value)}
-          >
-            <option sunday="Morning: 5am - 2pm">Morning: 5am - 2pm</option>
-            <option sunday="Evening: 4pm - 9pm">Evening: 4pm - 9pm</option>
+          <Field as="select" name="sunday">
+            <option value="not available">Not Available</option>
+            <option value="Morning: 5am - 2pm">Morning: 5am - 2pm</option>
+            <option value="Evening: 4pm - 9pm">Evening: 4pm - 9pm</option>
           </Field>
           <h4>Monday</h4>
-          <Field
-            as="select"
-            name="monday"
-            onChange={(e) => setMonday(e.target.value)}
-          >
-            <option monday="Morning: 5am - 2pm">Morning: 5am - 2pm</option>
-            <option monday="Evening: 4pm - 9pm">Evening: 4pm - 9pm</option>
+          <Field as="select" name="monday">
+            <option value="not available">Not Available</option>
+            <option value="Morning: 5am - 2pm">Morning: 5am - 2pm</option>
+            <option value="Evening: 4pm - 9pm">Evening: 4pm - 9pm</option>
           </Field>
-
           <h4>Tuesday</h4>
-          <Field
-            as="select"
-            name="tuesday"
-            onChange={(e) => setTuesday(e.target.value)}
-          >
-            <option tuesday="Morning: 5am - 2pm">Morning: 5am - 2pm</option>
-            <option tuesday="Evening: 4pm - 9pm">Evening: 4pm - 9pm</option>
+          <Field as="select" name="tuesday">
+            <option value="not available">Not Available</option>
+            <option value="Morning: 5am - 2pm">Morning: 5am - 2pm</option>
+            <option value="Evening: 4pm - 9pm">Evening: 4pm - 9pm</option>
           </Field>
-
           <h4>Wednesday</h4>
-          <Field
-            as="select"
-            name="wednesday"
-            onChange={(e) => setWednesday(e.target.value)}
-          >
-            <option wednesday="Morning: 5am - 2pm">Morning: 5am - 2pm</option>
-            <option wednesday="Evening: 4pm - 9pm">Evening: 4pm - 9pm</option>
+          <Field as="select" name="wednesday">
+            <option value="not available">Not Available</option>
+            <option value="Morning: 5am - 2pm">Morning: 5am - 2pm</option>
+            <option value="Evening: 4pm - 9pm">Evening: 4pm - 9pm</option>
           </Field>
-
           <h4>Thursday</h4>
-          <Field
-            as="select"
-            name="thursday"
-            onChange={(e) => setThursday(e.target.value)}
-          >
-            <option thursday="Morning: 5am - 2pm">Morning: 5am - 2pm</option>
-            <option thursday="Evening: 4pm - 9pm">Evening: 4pm - 9pm</option>
+          <Field as="select" name="thursday">
+            <option value="not available">Not Available</option>
+            <option value="Morning: 5am - 2pm">Morning: 5am - 2pm</option>
+            <option value="Evening: 4pm - 9pm">Evening: 4pm - 9pm</option>
           </Field>
-
           <h4>Friday</h4>
-          <Field
-            as="select"
-            name="friday"
-            onChange={(e) => setFriday(e.target.value)}
-          >
-            <option friday="Morning: 5am - 2pm">Morning: 5am - 2pm</option>
-            <option friday="Evening: 4pm - 9pm">Evening: 4pm - 9pm</option>
+          <Field as="select" name="friday">
+            <option value="not available">Not Available</option>
+            <option value="Morning: 5am - 2pm">Morning: 5am - 2pm</option>
+            <option value="Evening: 4pm - 9pm">Evening: 4pm - 9pm</option>
           </Field>
-
           <h4>Saturday</h4>
-          <Field
-            as="select"
-            name="saturday"
-            onChange={(e) => setSaturday(e.target.value)}
-          >
-            <option saturday="Morning: 5am - 2pm">Morning: 5am - 2pm</option>
-            <option saturday="Evening: 4pm - 9pm">Evening: 4pm - 9pm</option>
+          <Field as="select" name="saturday">
+            <option value="not available">Not Available</option>
+            <option value="Morning: 5am - 2pm">Morning: 5am - 2pm</option>
+            <option value="Evening: 4pm - 9pm">Evening: 4pm - 9pm</option>
           </Field>
           <button type="submit">Submit</button>
         </Form>
       </Formik>
       <div className="avail-container">
         <h3>My Availability</h3>
-        <div>{sunday.sunday}</div>
+        <div>SUNDAY: {sunday}</div>
+        <div>MONDAY: {avails.monday}</div>
+        <div>TUESDAY: {avails.tuesday}</div>
+        <div>WEDNESDAY: {avails.wednesday}</div>
+        <div>THURSDAY: {avails.thursday}</div>
+        <div>FRIDAY: {avails.friday}</div>
+        <div>SATURDAY: {avails.saturday}</div>
       </div>
     </div>
   );

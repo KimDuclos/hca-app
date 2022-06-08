@@ -1,7 +1,7 @@
 const knex = require("../db");
 
 // ALL
-exports.availsAll = async (res) => {
+exports.availsAll = async (req, res) => {
   knex
     .select("*")
     .from("avails")
@@ -9,7 +9,7 @@ exports.availsAll = async (res) => {
       res.json(userData);
     })
     .catch((err) => {
-      res.json({ message: `There as an error retrieving all avails. ${err}` });
+      res.json({ message: `There as an error retrieving all avails.` });
     });
 };
 
@@ -33,7 +33,7 @@ exports.availsCreate = async (req, res) => {
     })
     .catch((err) => {
       res.json({
-        message: `There was an error creating availability.`,
+        message: `There was an error creating availability: ${err}`,
       });
     });
 };
