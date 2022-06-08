@@ -1,4 +1,4 @@
-const knex = require("./../db");
+const knex = require("../db");
 
 // ALL
 exports.employeesAll = async (req, res) => {
@@ -61,3 +61,5 @@ exports.employeesDelete = async (req, res) => {
       });
     });
 };
+
+

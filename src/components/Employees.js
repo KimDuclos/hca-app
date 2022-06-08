@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
 import axios from "axios";
 
-const CreateEmployee = () => {
+const Employees = () => {
   const [employees, setEmployees] = useState([]);
   const [name, setName] = useState(" ");
   const [email, setEmail] = useState(" ");
@@ -70,4 +70,4 @@ const CreateEmployee = () => {
   );
 };
 
-export default CreateEmployee;
+export default Employees;

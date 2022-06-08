@@ -1,6 +1,7 @@
 const express = require("express");
 
-const employeesRoutes = require("../controllers/employees-controller");
+// EMPLOYEES
+const employeesRoutes = require("../controllers/employees-controllers");
 
 const router = express.Router();
 
@@ -11,5 +12,6 @@ router.post("/create", employeesRoutes.employeesCreate);
 router.put("/update", employeesRoutes.employeesUpdate);
 
 router.delete("/delete", employeesRoutes.employeesDelete);
+
 
 module.exports = router;
