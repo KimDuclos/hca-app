@@ -4,14 +4,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Availability = () => {
-  const [avails, setAvails] = useState("");
-  const [sunday, setSunday] = useState("");
-  const [monday, setMonday] = useState("");
-  const [tuesday, setTuesday] = useState("");
-  const [wednesday, setWednesday] = useState("");
-  const [thursday, setThursday] = useState("");
-  const [friday, setFriday] = useState("");
-  const [saturday, setSaturday] = useState("");
+  const [avails, setAvails] = useState([]);
+  // const [sunday, setSunday] = useState("");
+  // const [monday, setMonday] = useState("");
+  // const [tuesday, setTuesday] = useState("");
+  // const [wednesday, setWednesday] = useState("");
+  // const [thursday, setThursday] = useState("");
+  // const [friday, setFriday] = useState("");
+  // const [saturday, setSaturday] = useState("");
 
   useEffect(() => {
     fetchAvails();
@@ -36,6 +36,21 @@ const Availability = () => {
       friday: avails.friday,
       saturday: avails.saturday,
     });
+    console.log(avails);
+  };
+
+  const getAvailList = (item) => {
+    return (
+      <ul key={Math.random()}>
+        <li>Sunday: {item.sunday}</li>
+        <li>Monday: {item.monday}</li>
+        <li>Tuesday: {item.tuesday}</li>
+        <li>Wednesday: {item.wednesday}</li>
+        <li>Thursday: {item.thursday}</li>
+        <li>Friday: {item.friday}</li>
+        <li>Saturday: {item.saturday}</li>
+      </ul>
+    );
   };
 
   return (
@@ -52,22 +67,6 @@ const Availability = () => {
           saturday: "not available",
         }}
         onSubmit={(avails) => {
-          setSunday(sunday);
-          setMonday(monday);
-          setTuesday(tuesday);
-          setWednesday(wednesday);
-          setThursday(thursday);
-          setFriday(friday);
-          setSaturday(saturday);
-          console.log(`AVAILS:
-            Sunday: ${avails.sunday}
-            Monday: ${avails.monday}
-            Tuesday: ${avails.tuesday}
-            Wednesday: ${avails.wednesday}
-            Thursday: ${avails.thursday}
-            Friday: ${avails.friday}
-            Saturday: ${avails.saturday}
-          `);
           handleCreateAvail(avails);
         }}
       >
@@ -119,13 +118,14 @@ const Availability = () => {
       </Formik>
       <div className="avail-container">
         <h3>My Availability</h3>
-        <div>SUNDAY: {sunday}</div>
+        {/* <div>SUNDAY: {avails.sunday}</div>
         <div>MONDAY: {avails.monday}</div>
         <div>TUESDAY: {avails.tuesday}</div>
         <div>WEDNESDAY: {avails.wednesday}</div>
         <div>THURSDAY: {avails.thursday}</div>
         <div>FRIDAY: {avails.friday}</div>
-        <div>SATURDAY: {avails.saturday}</div>
+        <div>SATURDAY: {avails.saturday}</div> */}
+        <div>{avails.map(getAvailList)}</div>
       </div>
     </div>
   );
