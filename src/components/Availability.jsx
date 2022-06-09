@@ -30,6 +30,7 @@ const Availability = () => {
       friday: avails.friday,
       saturday: avails.saturday,
     });
+    fetchAvails();
   };
 
   const handleUpdateAvail = (avails) => {
@@ -42,9 +43,11 @@ const Availability = () => {
       friday: avails.friday,
       saturday: avails.saturday,
     });
+    fetchAvails();
   };
 
   const getAvailList = (item) => {
+    // fetchAvails();
     return (
       <ul key={Math.random()}>
         <li>Sunday: {item.sunday}</li>
