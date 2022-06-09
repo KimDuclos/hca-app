@@ -18,6 +18,7 @@ const CreateSchedule = () => {
   };
 
   const getEmpAvailList = (item) => {
+    fetchEmpAvails();
     return (
       <ul key={Math.random()}>
         <li>Sunday: {item.sunday}</li>
