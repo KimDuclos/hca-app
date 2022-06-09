@@ -9,7 +9,7 @@ exports.availsAll = async (req, res) => {
       res.json(userData);
     })
     .catch((err) => {
-      res.json({ message: `There as an error retrieving all avails.` });
+      res.json({ message: `There as an error retrieving all avails. ${err}` });
     });
 };
 

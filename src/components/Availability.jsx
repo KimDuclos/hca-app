@@ -5,13 +5,9 @@ import axios from "axios";
 
 const Availability = () => {
   const [avails, setAvails] = useState([]);
-  // const [sunday, setSunday] = useState("");
-  // const [monday, setMonday] = useState("");
-  // const [tuesday, setTuesday] = useState("");
-  // const [wednesday, setWednesday] = useState("");
-  // const [thursday, setThursday] = useState("");
-  // const [friday, setFriday] = useState("");
-  // const [saturday, setSaturday] = useState("");
+  let availsLength = avails.length;
+  console.log(`AvailsLength: ${availsLength}`);
+
 
   useEffect(() => {
     fetchAvails();
@@ -36,7 +32,19 @@ const Availability = () => {
       friday: avails.friday,
       saturday: avails.saturday,
     });
-    console.log(avails);
+    availsLength = 1;
+  };
+
+  const handleUpdateAvail = (avails) => {
+    axios.put("http://localhost:5000/avails/update", {
+      sunday: avails.sunday,
+      monday: avails.monday,
+      tuesday: avails.tuesday,
+      wednesday: avails.wednesday,
+      thursday: avails.thursday,
+      friday: avails.friday,
+      saturday: avails.saturday,
+    });
   };
 
   const getAvailList = (item) => {
@@ -67,7 +75,13 @@ const Availability = () => {
           saturday: "not available",
         }}
         onSubmit={(avails) => {
-          handleCreateAvail(avails);
+          if (availsLength === 0) {
+            handleCreateAvail(avails);
+            console.log(`avails has been created: ${avails}`);
+          } else if (availsLength !== 0) {
+            handleUpdateAvail(avails);
+            console.log(`avail has been updated: ${avails}`);
+          }
         }}
       >
         <Form>
@@ -118,13 +132,6 @@ const Availability = () => {
       </Formik>
       <div className="avail-container">
         <h3>My Availability</h3>
-        {/* <div>SUNDAY: {avails.sunday}</div>
-        <div>MONDAY: {avails.monday}</div>
-        <div>TUESDAY: {avails.tuesday}</div>
-        <div>WEDNESDAY: {avails.wednesday}</div>
-        <div>THURSDAY: {avails.thursday}</div>
-        <div>FRIDAY: {avails.friday}</div>
-        <div>SATURDAY: {avails.saturday}</div> */}
         <div>{avails.map(getAvailList)}</div>
       </div>
     </div>
