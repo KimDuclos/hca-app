@@ -6,8 +6,6 @@ import axios from "axios";
 const Availability = () => {
   const [avails, setAvails] = useState([]);
   let availsLength = avails.length;
-  console.log(`AvailsLength: ${availsLength}`);
-
 
   useEffect(() => {
     fetchAvails();
@@ -79,8 +77,9 @@ const Availability = () => {
             console.log(`avails has been created: ${avails}`);
           } else if (availsLength !== 0) {
             handleUpdateAvail(avails);
-            console.log(`avail has been updated: ${avails.sunday}`);
+            console.log(`avail has been updated: ${avails}`);
           }
+          fetchAvails();
         }}
       >
         <Form>
