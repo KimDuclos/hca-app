@@ -62,7 +62,7 @@ const Availability = () => {
 
   return (
     <div className="update-avail-container">
-      <h1>My Availability</h1>
+      <h3>Create or Update Your Schedule</h3>
       <Formik
         initialValues={{
           sunday: "not available",
