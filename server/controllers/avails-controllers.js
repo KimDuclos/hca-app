@@ -41,7 +41,7 @@ exports.availsCreate = async (req, res) => {
 // UPDATE
 exports.availsUpdate = async (req, res) => {
   knex("avails")
-    .where("id", req.body.id)
+    // .where("id", req.body.id)
     .update({
       sunday: req.body.sunday,
       monday: req.body.monday,

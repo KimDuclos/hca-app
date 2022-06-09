@@ -32,7 +32,6 @@ const Availability = () => {
       friday: avails.friday,
       saturday: avails.saturday,
     });
-    availsLength = 1;
   };
 
   const handleUpdateAvail = (avails) => {
@@ -80,7 +79,7 @@ const Availability = () => {
             console.log(`avails has been created: ${avails}`);
           } else if (availsLength !== 0) {
             handleUpdateAvail(avails);
-            console.log(`avail has been updated: ${avails}`);
+            console.log(`avail has been updated: ${avails.sunday}`);
           }
         }}
       >
