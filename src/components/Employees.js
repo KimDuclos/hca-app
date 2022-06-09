@@ -25,6 +25,7 @@ const Employees = () => {
       name: name,
       email: email,
     });
+    fetchEmployees();
   };
 
   const getEmployeeList = (item) => {
@@ -46,6 +47,7 @@ const Employees = () => {
         onSubmit={() => {
           console.log(name, email);
           handleCreateEmployee();
+          fetchEmployees();
         }}
       >
         <Form>

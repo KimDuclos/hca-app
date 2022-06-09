@@ -47,7 +47,6 @@ const Availability = () => {
   };
 
   const getAvailList = (item) => {
-    // fetchAvails();
     return (
       <ul key={Math.random()}>
         <li>Sunday: {item.sunday}</li>
