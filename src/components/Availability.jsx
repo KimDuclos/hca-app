@@ -1,12 +1,9 @@
 import React from "react";
 import { Field, Form, Formik } from "formik";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 
-const Availability = () => {
-  const [avails, setAvails] = useState([]);
-  let availsLength = avails.length;
-
+const Availability = ({empAvails, setEmpAvails}) => {
   useEffect(() => {
     fetchAvails();
   }, []);
@@ -15,7 +12,7 @@ const Availability = () => {
     axios
       .get("http://localhost:5000/avails/all")
       .then((res) => {
-        setAvails(res.data);
+        setEmpAvails(res.data);
       })
       .catch((err) => `There was an error retrieving all avails: ${err}`);
   };
@@ -74,6 +71,7 @@ const Availability = () => {
           saturday: "not available",
         }}
         onSubmit={(avails) => {
+          let availsLength = empAvails.length;
           if (availsLength === 0) {
             handleCreateAvail(avails);
             console.log(`avails has been created: ${avails}`);
@@ -132,7 +130,7 @@ const Availability = () => {
       </Formik>
       <div className="avail-container">
         <h3>My Availability</h3>
-        <div>{avails.map(getAvailList)}</div>
+        <div>{empAvails.map(getAvailList)}</div>
       </div>
     </div>
   );

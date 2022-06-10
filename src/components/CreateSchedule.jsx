@@ -1,25 +1,9 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-const CreateSchedule = () => {
-  const [empAvails, setEmpAvails] = useState([]);
-
-  useEffect(() => {
-    fetchEmpAvails();
-  }, []);
-
-  const fetchEmpAvails = async () => {
-    axios
-      .get("http://localhost:5000/avails/all")
-      .then((res) => {
-        setEmpAvails(res.data);
-      })
-      .catch((err) => `There was an error retrieving all schedules: ${err}`);
-  };
-
+const CreateSchedule = ({empAvails}) => {
 
   const getEmpAvailList = (item) => {
-    fetchEmpAvails();
     return (
       <ul key={Math.random()}>
         <li>Sunday: {item.sunday}</li>
@@ -32,8 +16,6 @@ const CreateSchedule = () => {
       </ul>
     );
   };
-
-  // fetchEmpAvails();
 
   return (
     <div className="make-schedule-container">
