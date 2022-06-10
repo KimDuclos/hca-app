@@ -25,13 +25,16 @@ const Employees = () => {
       name: name,
       email: email,
     });
+
     fetchEmployees();
   };
 
   const getEmployeeList = (item) => {
     return (
       <ul key={Math.random()}>
-        <li>{item.name} {item.email}</li>
+        <li>
+          {item.name} {item.email}
+        </li>
       </ul>
     );
   };
@@ -47,7 +50,7 @@ const Employees = () => {
         onSubmit={() => {
           console.log(name, email);
           handleCreateEmployee();
-          fetchEmployees();
+          // fetchEmployees();
         }}
       >
         <Form>

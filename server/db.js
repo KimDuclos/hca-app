@@ -43,7 +43,7 @@ knex.schema.hasTable("avails").then((exists) => {
   if (!exists) {
     return knex.schema
       .createTable("avails", (table) => {
-        table.increments("id").primary();
+        table.integer("id").primary();
         table.string("sunday");
         table.string("monday");
         table.string("tuesday");

@@ -17,7 +17,9 @@ const CreateSchedule = () => {
       .catch((err) => `There was an error retrieving all schedules: ${err}`);
   };
 
+
   const getEmpAvailList = (item) => {
+    fetchEmpAvails();
     return (
       <ul key={Math.random()}>
         <li>Sunday: {item.sunday}</li>
@@ -31,7 +33,7 @@ const CreateSchedule = () => {
     );
   };
 
-  fetchEmpAvails();
+  // fetchEmpAvails();
 
   return (
     <div className="make-schedule-container">
